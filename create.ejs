@@ -1,0 +1,42 @@
+<% layout("/layout/biolerplate") -%>
+<div class="row">
+    <h2 class="text">Create a new list</h2>
+ <div class="col-8 offset-2">
+    <form method="POST" action="/listing">
+        <div class="md-3">
+            <label for="title" class="form-label">Title</label>
+        <input name="listing[title]" placeholder="enter a title" type="text" class="form-control">
+      </div>
+      
+      <div class="md-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" placeholder="enter a description" type="text" class="form-control">   </textarea></div>
+      
+<div class="md-3"><label for="image" class="form-label">Image Link</label>
+         <input name="listing[image.URL]" placeholder="enter a imkage URL" type="file" class="form-control">
+      </div>
+      
+          <div class="row">
+
+      <div class="md-3 col-4"><label for="price" class="form-label">Price</label>
+         <input name="listing[price]" placeholder="enter a price" type="number" class="form-control" required>
+     </div>
+     
+     
+     <div class="md-3 col-8">
+        <label for="location" class="form-label">Location</label>
+         <input name="listing[location]" placeholder="enter a location" type="text" class="form-control"> 
+        </div>
+        </div>
+        <div class="md-3">
+            <label for="country" class="form-label">Country</label>
+ <input name="listing[country]" placeholder="enter a country" type="text" class="form-control">
+      </div>
+     <br>
+     <br>
+     <br>
+        <button class="btn btn-dark">Add</button>
+       
+    </form>
+    </div>
+   </div>

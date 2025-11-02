@@ -1,0 +1,127 @@
+<% layout("/layout/biolerplate") -%>
+<style>
+  #line{
+    border: 0.5px black solid;
+    border-radius: 0.5%;
+    /* width: 500px;
+    height: 150px; */
+  }
+  .starability-basic {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* spacing between stars */
+}
+
+.starability-basic input[type="radio"] {
+  display: none; /* hide the actual radio button */
+}
+
+.starability-basic label {
+  font-size: 2rem; 
+}
+
+
+.starability-basic label::before {
+  content: "★";
+}
+.map{
+margin-left: 10px;
+}
+
+
+</style>
+  <h3 class="">List Details</h3>
+  <div class="row mt-3">
+  <div class="col-8 offset-2">
+<div class="card col-6" >
+   <h2><%= all.title %></h2>
+  <img class="card-img-top show-img" src="<%= all.image %>" alt="Card image cap" >
+  <div class="card-body">
+    <p class="card-text">
+        <%= all.description  %>
+        <br>
+        <!-- &#8377;> -->
+        <br>
+        <%= all. location %>
+        <br>
+        <%= all.  country %>
+    </p>
+  </div>
+</div>
+<div class="row">
+    <div class="col-4">
+    <a href="/listing/<%= all._id %>/edit" class="btn btn-dark ">edit this form</a>
+    </div>
+    <div class="col-8">
+    <form method="POST" action="/listing/<%= all._id %>?_method=DELETE">
+<button class="btn btn-dark " id="bu">Delete this form</button>
+</div>
+</div>
+    </form>
+</div>
+</div>
+<hr>
+
+
+<div class="col-8 offset-2">
+  <h2>Leave A Reveiew</h2>
+   <form action="/listings/<%= all._id %>/reveiws" method="post" novalidate class="needs-validation">
+  <div class="mb-3 mt-3">
+    <label for="rating" class="form-label">Rating</label>
+    <!-- <input type="range" id="rating" name="reveiew[rating]" min="1" max="5" class="form-range"> -->
+     <fieldset class="starability-basic">
+      <input type="radio" id="no-rate" class="input-no-rate" name="reveiew[rating]" value="0" checked aria-label="No rating." />
+      <input type="radio" id="rate1" name="reveiew[rating]" value="1" />
+      <label for="rate1">1 star.</label>
+
+      <input type="radio" id="rate2" name="reveiew[rating]" value="2" />
+      <label for="rate2">2 stars.</label>
+
+      <input type="radio" id="rate3" name="reveiew[rating]" value="3" />
+      <label for="rate3">3 stars.</label>
+
+      <input type="radio" id="rate4" name="reveiew[rating]" value="4" />
+      <label for="rate4">4 stars.</label>
+
+      <input type="radio" id="rate5" name="reveiew[rating]" value="5" />
+      <label for="rate5">5 stars.</label>
+
+      <span class="starability-focus-ring"></span>
+    </fieldset>
+    </div>
+    
+   <div>
+      <label for="comment" class="form-label">comment</label>
+      <textarea name="reveiew[comment]" id="comment" cols="30" rows="6" class="form-control" required></textarea>
+      <div class="invalid-feedback">please submit some command</div>
+   </div>
+  
+     <button class="btn btn-outline-dark">submit</button>
+
+  </form>
+
+  <hr>
+  <div class="row">
+    <% for( let reveiew of all.reveiew) {%>
+<div class="card">
+  <div class="card-body" id="line">
+<h5 class="card-text">Aishwarya</h5>
+    <p class="card-text"><li><%= reveiew.comment %></li></p>
+  <p class="starability-result" data-rating="<%= reveiew.rating %>">
+  
+  </p>
+<%  }%>
+  </div>
+  <div class="mb-3">
+  <h2>Location:</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448196.5259053188!2d76.76357451215983!3d28.64368472633456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi!5e0!3m2!1sen!2sin!4v1761991922517!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+  </div>
+  </div>
+  </div>
+  </div>
+  <br>
+  <hr>
+  
+
+
+
